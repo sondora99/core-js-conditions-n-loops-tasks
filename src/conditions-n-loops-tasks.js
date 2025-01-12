@@ -88,8 +88,13 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === 0 || b === 0 || c === 0) {
+    return false;
+  }
+  return (
+    (a === b && a + b > c) || (b === c && b + c > a) || (a === c && a + c > b)
+  );
 }
 
 /**
@@ -106,8 +111,29 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const romanNumerals = [
+    { value: 10, numeral: 'X' },
+    { value: 9, numeral: 'IX' },
+    { value: 5, numeral: 'V' },
+    { value: 4, numeral: 'IV' },
+    { value: 1, numeral: 'I' },
+  ];
+
+  let result = '';
+  let tempNum = num;
+  let i = 0;
+
+  while (tempNum > 0) {
+    if (tempNum >= romanNumerals[i].value) {
+      result += romanNumerals[i].numeral;
+      tempNum -= romanNumerals[i].value;
+    } else {
+      i += 1;
+    }
+  }
+
+  return result;
 }
 
 /**
