@@ -274,8 +274,19 @@ function getIndexOf(str, letter) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  const temp = `${num}`;
+  const digTemp = `${digit}`;
+  let result;
+  for (let i = 0; i <= temp.length; i += 1) {
+    if (digTemp === temp[i]) {
+      result = true;
+      break;
+    } else {
+      result = false;
+    }
+  }
+  return result;
 }
 
 /**
@@ -353,8 +364,18 @@ function rotateMatrix(/* matrix */) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+function sortByAsc(arr) {
+  const arr2 = arr;
+  for (let i = 1; i < arr2.length; i += 1) {
+    const key = arr2[i];
+    let j = i - 1;
+    while (j >= 0 && arr2[j] > key) {
+      arr2[j + 1] = arr2[j];
+      j -= 1;
+    }
+    arr2[j + 1] = key;
+  }
+  return arr2;
 }
 
 /**
