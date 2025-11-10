@@ -424,7 +424,6 @@ function rotateMatrix(matrix) {
       right -= 1;
     }
   }
-  console.log(resultMatrix);
   return resultMatrix;
 }
 
@@ -473,47 +472,8 @@ function sortByAsc(arr) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(str, iterations) {
-  const iter = iterations;
-  const arr = [];
-  for (let i = 0; i < str.length; i += 1) {
-    arr[i] = str[i];
-  }
-  const n = arr.length;
-  let effectiveIterations = iter % (2 * n);
-
-  while (effectiveIterations > 0) {
-    let oddArray = [];
-    let evenArray = [];
-    for (let i = 0; i < arr.length; i += 1) {
-      if (i % 2 === 0) {
-        evenArray = +arr[i];
-      }
-      if (i % 2 !== 0) {
-        oddArray = +arr[i];
-      }
-    }
-
-    const newArr = [];
-    let k = 0;
-    for (let i = 0; i < evenArray; i += 1) {
-      newArr[(k += 1)] = evenArray[i];
-    }
-    for (let i = 0; i < oddArray; i += 1) {
-      newArr[(k += 1)] = oddArray[i];
-    }
-
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i] = newArr[i];
-    }
-    effectiveIterations -= 1;
-  }
-
-  let result = '';
-  for (let i = 0; i < arr.length; i += 1) {
-    result += arr[i];
-  }
-  return result;
+function shuffleChar(/* str, iterations */) {
+  throw new Error('Not implemented');
 }
 
 /**
