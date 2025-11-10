@@ -404,8 +404,28 @@ function getSpiralMatrix(size) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(/* matrix */) {
-  throw new Error('Not implemented');
+function rotateMatrix(matrix) {
+  const resultMatrix = matrix;
+  for (let i = 0; i < resultMatrix.length; i += 1) {
+    for (let j = i + 1; j < resultMatrix.length; j += 1) {
+      const temp = resultMatrix[i][j];
+      resultMatrix[i][j] = resultMatrix[j][i];
+      resultMatrix[j][i] = temp;
+    }
+  }
+  for (let i = 0; i < resultMatrix.length; i += 1) {
+    let left = 0;
+    let right = resultMatrix.length - 1;
+    while (left < right) {
+      const temp = resultMatrix[i][left];
+      resultMatrix[i][left] = resultMatrix[i][right];
+      resultMatrix[i][right] = temp;
+      left += 1;
+      right -= 1;
+    }
+  }
+  console.log(resultMatrix);
+  return resultMatrix;
 }
 
 /**
@@ -453,8 +473,47 @@ function sortByAsc(arr) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  const iter = iterations;
+  const arr = [];
+  for (let i = 0; i < str.length; i += 1) {
+    arr[i] = str[i];
+  }
+  const n = arr.length;
+  let effectiveIterations = iter % (2 * n);
+
+  while (effectiveIterations > 0) {
+    let oddArray = [];
+    let evenArray = [];
+    for (let i = 0; i < arr.length; i += 1) {
+      if (i % 2 === 0) {
+        evenArray = +arr[i];
+      }
+      if (i % 2 !== 0) {
+        oddArray = +arr[i];
+      }
+    }
+
+    const newArr = [];
+    let k = 0;
+    for (let i = 0; i < evenArray; i += 1) {
+      newArr[(k += 1)] = evenArray[i];
+    }
+    for (let i = 0; i < oddArray; i += 1) {
+      newArr[(k += 1)] = oddArray[i];
+    }
+
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i] = newArr[i];
+    }
+    effectiveIterations -= 1;
+  }
+
+  let result = '';
+  for (let i = 0; i < arr.length; i += 1) {
+    result += arr[i];
+  }
+  return result;
 }
 
 /**
